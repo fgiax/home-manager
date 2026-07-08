@@ -80,6 +80,11 @@
 
   programs.fzf.enable = true;
 
+  # --[ Git, GH ]--
+  programs.git.enable = true;
+  programs.gh.enable = true;
+
+  # --[ W3m ]--
   programs.w3m = {
     enable = true;
     homePage = "https://duckduckgo.com";
@@ -95,10 +100,6 @@
   programs.fish.shellAliases = { vim = "nvim"; vi = "nvim"; v = "nvim ."; };
   programs.fish.plugins = [ { name = "grc"; src = pkgs.fishPlugins.grc.src; } ];
   programs.starship.enable = true;
-
-  # --[ Git, GH ]--
-  programs.git.enable = true;
-  programs.gh.enable = true;
 
   # --[ Tmux ]--
   programs.tmux.enable = true;
