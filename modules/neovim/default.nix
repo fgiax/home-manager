@@ -8,5 +8,7 @@
     vim.opt.confirm = true
     vim.opt.mouse = "i"
     vim.opt.wrap = false
+    vim.g.catppuccin_transparent_background = true
+    vim.cmd "colorscheme catppuccin"
   '';
 }
