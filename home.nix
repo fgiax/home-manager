@@ -105,6 +105,6 @@
   programs.neovim.enable = true;
 
   home.activation.hello-me = ''
-    hello-me
+    run hello-me
   '';
 }
