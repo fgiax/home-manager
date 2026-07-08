@@ -23,7 +23,9 @@
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
     (pkgs.writeShellScriptBin "hello-me" ''
-      ${pkgs.cowsay}/bin/cowsay "Hello, ${config.home.username}!"
+      user="${config.home.username}"
+      user="''${user^}"
+      ${pkgs.cowsay}/bin/cowsay "Hello, $user!"
     '')
   ];
 
@@ -101,4 +103,8 @@
 
   # --[ Neovim ]--
   programs.neovim.enable = true;
+
+  home.activation.hello-me = ''
+    hello-me
+  '';
 }
