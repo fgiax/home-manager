@@ -21,6 +21,10 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    neovim
+    cowsay
+    alejandra
+    grc
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -73,4 +77,54 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.fzf.enable = true;
+
+  programs.w3m = {
+    enable = true;
+    homePage = "https://duckduckgo.com";
+  };
+
+  # --[ Fish ]--
+  programs.fish.enable = true;
+  programs.fish.interactiveShellInit = ''
+    set -g fish_greeting
+    set -gx EDITOR nvim
+    set -gx MANPAGER "nvim +Man!"
+  '';
+  programs.fish.shellAliases = { vim = "nvim"; vi = "nvim"; v = "nvim ."; };
+  programs.fish.plugins = [ { name = "grc"; src = pkgs.fishPlugins.grc.src; } ];
+  programs.starship.enable = true;
+
+  # --[ Git ]--
+  programs.git.enable = true;
+
+  # --[ Tmux ]--
+  programs.tmux.enable = true;
+  programs.tmux.shell = "${pkgs.fish}/bin/fish";
+  programs.tmux.baseIndex = 1;
+  programs.tmux.historyLimit = 10000;
+  programs.tmux.mouse = false;
+  programs.tmux.aggressiveResize = false;
+  programs.tmux.focusEvents = true;
+  programs.tmux.newSession = false;
+  programs.tmux.extraConfig = ''
+    set -g status-bg black
+    set -g status-fg yellow
+    set -g status-right "%a %d-%b"
+    set -ag terminal-overrides ",screen-256color:RGB"
+    set -ag terminal-overrides ",tmux-256color:RGB"
+    set -ag terminal-overrides ",xterm-256color:RGB"
+  '';
+
+  # --[ Ranger ]--
+  programs.ranger.enable = true;
+  programs.ranger.settings = {
+    column_ratios = "1";
+    confirm_on_delete = "never";
+    scroll_offset = 8;
+    unicode_ellipsis = true;
+    show_hidden = true;
+    draw_borders = "both";
+  };
 }
