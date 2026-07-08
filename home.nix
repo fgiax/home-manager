@@ -103,8 +103,4 @@
 
   # --[ Neovim ]--
   programs.neovim.enable = true;
-
-  home.activation.hello-me = ''
-    run ${pkgs.hello-me}/bin/hello-me
-  '';
 }
