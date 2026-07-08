@@ -10,6 +10,7 @@
         plugins: with plugins; [
           nix
           python
+	  markdown
         ]
       ))
 
