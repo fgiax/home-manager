@@ -105,6 +105,6 @@
   programs.neovim.enable = true;
 
   home.activation.hello-me = ''
-    run hello-me
+    run ${pkgs.hello-me}/bin/hello-me
   '';
 }
