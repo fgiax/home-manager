@@ -72,7 +72,9 @@
   #  /etc/profiles/per-user/nix/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    GREETING = "HM is Ok!";
+    EDITOR = "nvim";
+    MANPAGER = "nvim +Man!";
   };
 
   # Let Home Manager install and manage itself.
@@ -94,8 +96,6 @@
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
     set -g fish_greeting
-    set -gx EDITOR nvim
-    set -gx MANPAGER "nvim +Man!"
   '';
   programs.fish.shellAliases = { vim = "nvim"; vi = "nvim"; v = "nvim ."; };
   programs.fish.plugins = [ { name = "grc"; src = pkgs.fishPlugins.grc.src; } ];
