@@ -2,7 +2,7 @@
 
 {
   programs.neovim.enable = true;
-  programs.neovim.extraLuaConfig = ''
+  programs.neovim.initLua = ''
     vim.opt.number = true
     vim.opt.relativenumber = true
     vim.opt.confirm = true
