@@ -17,7 +17,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -96,8 +96,9 @@
   programs.fish.plugins = [ { name = "grc"; src = pkgs.fishPlugins.grc.src; } ];
   programs.starship.enable = true;
 
-  # --[ Git ]--
+  # --[ Git, GH ]--
   programs.git.enable = true;
+  programs.gh.enable = true;
 
   # --[ Tmux ]--
   programs.tmux.enable = true;
