@@ -98,7 +98,4 @@
     show_hidden = true;
     draw_borders = "both";
   };
-
-  # --[ Neovim ]--
-  programs.neovim.enable = true;
 }
