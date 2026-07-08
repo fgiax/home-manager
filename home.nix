@@ -1,12 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "nix";
   home.homeDirectory = "/home/nix";
 
-  home.stateVersion = "26.05"; # Please read the comment before changing.
+  home.stateVersion = "26.05";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -25,7 +23,7 @@
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
     (pkgs.writeShellScriptBin "hello-me" ''
-      cowsay "Hello, ${config.home.username}!"
+      ${pkgs.cowsay}/bin/cowsay "Hello, ${config.home.username}!"
     '')
   ];
 
@@ -33,9 +31,6 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim".source = ./dotfiles/nvim;
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
     # # You can also set the file content immediately.
@@ -87,7 +82,7 @@
   programs.tmux.newSession = false;
   programs.tmux.extraConfig = ''
     set -g status-bg black
-    set -g status-fg yellow
+    set -g status-fg gray
     set -g status-right "%a %d-%b"
     set -ag terminal-overrides ",screen-256color:RGB"
     set -ag terminal-overrides ",tmux-256color:RGB"
