@@ -31,7 +31,6 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim".source = ./dotfiles/nvim;
-    # ".screenrc".source = dotfiles/screenrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
