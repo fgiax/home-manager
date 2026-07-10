@@ -10,6 +10,7 @@
   # environment.
   home.packages = with pkgs; [
     cowsay
+    dysk
     alejandra
     grc
 
@@ -45,7 +46,7 @@
     MANPAGER = "nvim +Man!";
   };
 
-  # Let Home Manager install and manage itself.
+  # --[ Home Manager ]--
   programs.home-manager.enable = true;
 
   # --[ Fzf ]--
@@ -62,35 +63,42 @@
   };
 
   # --[ Fish ]--
-  programs.fish.enable = true;
-  programs.fish.interactiveShellInit = ''
-    set -g fish_greeting
-  '';
-  programs.fish.shellAliases = { vim = "nvim"; vi = "nvim"; v = "nvim ."; };
-  programs.fish.plugins = [ { name = "grc"; src = pkgs.fishPlugins.grc.src; } ];
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set -g fish_greeting
+    '';
+    shellAliases = { vim = "nvim"; vi = "nvim"; v = "nvim ."; };
+    plugins = [ { name = "grc"; src = pkgs.fishPlugins.grc.src; } ];
+  };
+
+  # --[ Starship ]--
   programs.starship.enable = true;
 
   # --[ Tmux ]--
-  programs.tmux.enable = true;
-  programs.tmux.shell = "${pkgs.fish}/bin/fish";
-  programs.tmux.baseIndex = 1;
-  programs.tmux.historyLimit = 10000;
-  programs.tmux.mouse = false;
-  programs.tmux.aggressiveResize = false;
-  programs.tmux.focusEvents = true;
-  programs.tmux.newSession = false;
-  programs.tmux.extraConfig = ''
-    set -g status-bg black
-    set -g status-fg gray
-    set -g status-right "%a %d-%b"
-    set -ag terminal-overrides ",screen-256color:RGB"
-    set -ag terminal-overrides ",tmux-256color:RGB"
-    set -ag terminal-overrides ",xterm-256color:RGB"
-  '';
+  programs.tmux = {
+    enable = true;
+    shell = "${pkgs.fish}/bin/fish";
+    baseIndex = 1;
+    historyLimit = 10000;
+    mouse = false;
+    aggressiveResize = false;
+    focusEvents = true;
+    newSession = false;
+    extraConfig = ''
+      set -g status-bg black
+      set -g status-fg colour245
+      set -g status-right "%a %d-%b"
+      set -ag terminal-overrides ",screen-256color:RGB"
+      set -ag terminal-overrides ",tmux-256color:RGB"
+      set -ag terminal-overrides ",xterm-256color:RGB"
+    '';
+  };
 
   # --[ Ranger ]--
-  programs.ranger.enable = true;
-  programs.ranger.settings = {
+  programs.ranger = {
+    enable = true;
+    settings = {
     column_ratios = "1";
     confirm_on_delete = "never";
     scroll_offset = 8;
