@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixvim.url = "github:nix-community/nixvim";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,8 +24,9 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-	  ./home.nix
-	];
+         ./home.nix
+         ./nixvim.nix
+        ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

@@ -10,8 +10,6 @@
   # environment.
   home.packages = with pkgs; [
     cowsay
-    dysk
-    alejandra
     grc
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -42,8 +40,6 @@
 
   home.sessionVariables = {
     GREETING = "Home Manager is Ok!";
-    EDITOR = "nvim";
-    MANPAGER = "nvim +Man!";
   };
 
   # --[ Home Manager ]--
@@ -97,13 +93,14 @@
 
   # --[ Ranger ]--
   programs.ranger = {
-    enable = true;
-    settings = {
-    column_ratios = "1";
-    confirm_on_delete = "never";
-    scroll_offset = 8;
-    unicode_ellipsis = true;
-    show_hidden = true;
-    draw_borders = "both";
+      enable = true;
+      settings = {
+      column_ratios = "1";
+      confirm_on_delete = "never";
+      scroll_offset = 8;
+      unicode_ellipsis = true;
+      show_hidden = true;
+      draw_borders = "both";
+    };
   };
 }
