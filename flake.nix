@@ -12,20 +12,30 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    { nixpkgs, home-manager, nixvim, ... }:
     let
       system = "aarch64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      homeConfigurations."nix" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."nixhero-home" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
+          nixvim.homeModules.nixvim
          ./home.nix
-         ./nixvim.nix
+        ];
+      homeConfigurations."nixvim" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [
+          nixvim.homeModules.nixvim
+         ./home.nix
+	 ./nixvim.nix
         ];
 
         # Optionally use extraSpecialArgs
