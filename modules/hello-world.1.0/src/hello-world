@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+say() {
+  local prefix="-- "
+  printf '\n%s%s\n\n' "$prefix" "$*"
+}
+
+say "Hello, World!"
